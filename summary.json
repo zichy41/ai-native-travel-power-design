@@ -1,0 +1,6 @@
+{
+  "direct_torque_Nm": 0.042797,
+  "stacked_torque_Nm": 0.088109,
+  "short_torque_Nm": 0.002453,
+  "short_reduction_vs_stacked": 0.972165
+}
