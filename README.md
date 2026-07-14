@@ -1,160 +1,106 @@
-# AI-Native Travel Power Design
+# Anker Atlas Relay
 
-> An AI-native product design experiment for a reliable cross-border travel power system.  
-> 飞书「AI 先锋未来人才大赛」安克创新命题参赛研究仓库。
+> 飞书「2026 AI 先锋未来人才大赛」安克创新命题：AI 原生产品设计与定义实验。
 
-## 1. Project Goal / 项目目标
+**Atlas Relay** 是一套面向高频跨国、多设备旅行者的高可靠 USB-C 供电概念：用地区短电源线把重型 GaN 主机从墙面移到桌面，并记录 AC 中断、USB-C 重连、异常低功率与温度事件。
 
-本项目选择安克的**智能充电品类**，探索一套可复用的“AI 原生产品设计与定义工作流”，并用该工作流提出一款面向跨国、多设备旅行者的产品概念。
+![System architecture](engineering/architecture_v1.png)
 
-当前产品假设为：
+## 项目要回答的问题
 
-**Anker Atlas Relay**  
-一套采用“轻量地区插头 + 短线式桌面 GaN 主机 + 充电连续性确认”的高可靠旅行供电系统。
+安克的命题不是“让 AI 快一点想产品”，而是验证：
 
-核心问题不是“再做一个功率更高、接口更多的旅行充电器”，而是：
+> AI 能否作为研究员、用户替身、反方评审和工程专家，形成一套可复用、可追溯、能否决错误假设的产品定义 SOP？
 
-> 如何降低陌生、松动、凹陷或位置受限插座中的机械失效风险，并确保用户第二天真正获得可用电量？
+本项目从一个经验驱动的“大而全模块化旅行充电器”出发，经公开证据、竞品拆解、反方用户、力学模型和工程审查，逐步收敛为 Atlas Relay。
 
-## 2. Challenge / 命题要求
+## 当前成果
 
-安克创新要求参赛者：
+- 经验驱动 Baseline V0 与决策日志；
+- AI 原生工作流 V2 与角色/证据/假设数据结构；
+- 竞品拆解和候选方案评分；
+- 80 条公开讨论编码、37 个独立讨论链接；
+- 墙端静态力矩数字仿真；
+- 产品系统架构、能力边界和 FMEA；
+- 可复现实体实验方案与测试矩阵；
+- 产品外观、结构和用户流程；
+- 报名开题文案；
+- 可运行的确定性工作流演示和静态交互看板。
 
-1. 选择一个安克品类；
-2. 设计并演示一套“AI 原生”的产品设计与定义工作流；
-3. 产出用户洞察、产品概念与可行性分析；
-4. 对比 AI 驱动方法和传统经验驱动方法的本质差异。
+## 当前产品定义
 
-详见 [`docs/00_challenge_brief.md`](docs/00_challenge_brief.md)。
+| 模块 | 定义 |
+|---|---|
+| Country Cord | 按行程选带的低轮廓地区短电源线 |
+| Relay Hub | 约 100W、3 × USB-C 的桌面 GaN 主机 |
+| Charge Assurance | 记录 AC 中断、PD 重连、低功率、温度和累计能量 |
+| Local-first UI | 本机状态优先，BLE 手机通知可选 |
+| 明确不做 | AC 万能透传、电压转换、大容量电池、强制云端账号 |
 
-## 3. Experience-Driven Baseline V0 / 经验驱动基线
+详细定义见 [`docs/10_current_product_definition_v1.md`](docs/10_current_product_definition_v1.md)。
 
-最初凭个人旅行经验提出的直觉方案是：
-
-> 将 GaN 充电器、地区转换插头、充电宝和线材设计成可自由组合的模块化旅行供电系统。
-
-这一方案存在明显“先有答案、再找理由”的风险。项目因此建立 Baseline V0，随后让 AI 用户替身、公开用户证据、竞品资料和工程模型共同挑战它。
-
-详见 [`docs/02_experience_baseline_v0.md`](docs/02_experience_baseline_v0.md)。
-
-## 4. How AI Changed the Direction / AI 如何改变方向
-
-AI 合成用户情境扩大了场景覆盖，但也暴露出确认偏差和技术幻觉。公开讨论与力学建模进一步提示：
-
-- 重型充电器叠加转换头会显著提高墙端下坠力矩；
-- 用户已自发使用短延长线或桌面充电器卸载墙面重量；
-- 部分旅行者偏好轻量、目的地明确的地区插头；
-- 万能转换头对另一部分用户已经足够，因此产品不应面向所有旅行者；
-- “可拆卸电池”“App 提醒”“20%–30% 溢价”目前证据不足。
-
-产品方向由“大而全的模块化旅行供电系统”收敛为：
-
-> **优先解决机械稳定性、地区适配正确性和充电连续性确认。**
-
-## 5. Current Product Hypothesis / 当前产品假设
-
-### Anker Atlas Relay
-
-- **Region Plug Head**：轻量、目的地明确的地区插头模块；
-- **Flex-Link**：约 25–30 cm 的柔性短电源线，将重型主机从墙面移至桌面；
-- **GaN Power Hub**：面向笔记本、手机、平板与相机的多 USB-C 桌面主机；
-- **Charge Assurance**：检测输入中断、端口反复断连和异常低功率，提供本机提示；手机通知为可选功能；
-- **V2 可选扩展**：可拆卸电池模块，尚未进入核心版本。
-
-这仍然是**待验证的产品假设**，不是已经被市场证明的结论。
-
-## 6. Engineering Simulation / 工程建模
-
-仓库包含一个简化静力模型，对比三种结构的墙端下坠力矩：
-
-1. 65W 充电器直接插墙；
-2. 旅行转换头与 65W 充电器叠加；
-3. 轻量墙插头 + 短线 + 桌面主机。
-
-运行：
-
-```bash
-pip install -r requirements.txt
-python simulation/torque_model.py
-```
-
-核心模型：
-
-\[
-\tau = m g d
-\]
-
-当前基准结果：
-
-| 结构 | 估算下坠力矩 |
-|---|---:|
-| 65W 直插 | 约 0.043 N·m |
-| 转换头 + 65W 充电器 | 约 0.088 N·m |
-| 轻量插头 + 短线 | 约 0.0025 N·m |
-
-短线方案相对叠加结构的墙端静态力矩降低约 97%。  
-**这不等于真实掉落率降低 97%**，模型只支持“墙端机械负载被显著降低”。
-
-详见 [`simulation/README.md`](simulation/README.md)。
-
-## 7. Repository Contents / 仓库结构
+## AI 原生工作流
 
 ```text
-docs/        命题拆解、问题定义、AI 原生工作流、决策日志
-research/    合成用户、公开证据、竞品矩阵、假设登记表
-simulation/  力矩模型与参数
-results/     仿真结果和图表
-prototype/   后续交互原型与 Agent 工作流
+Baseline
+  → Evidence collection
+  → Insight & JTBD extraction
+  → Synthetic user stress test
+  → Counter-evidence search
+  → Engineering / safety review
+  → Candidate scoring
+  → Decision audit
+  → Physical experiment
+  → Evidence update
 ```
 
-## 8. Evidence Policy / 证据原则
+AI 不自动批准产品。核心机制是：**证据门槛、反方意见、能力边界和 Kill Criteria**。
+
+## 仓库结构
+
+```text
+application/   报名开题文案与提交清单
+engineering/   架构、FMEA、实验方案、测试台和数据模板
+product/       工业设计、尺寸、用户流程和结构图
+prototype/     工作流 mock 与静态交互看板
+workflow/      Agent 角色、Prompt 与 JSON Schema
+research/      竞品、公开证据、假设和来源索引
+simulation/    墙端力矩模型
+results/       仿真、评分、编码摘要与演示输出
+docs/          命题、方法演化、决策与当前定义
+scripts/       仓库完整性检查
+```
+
+完整目录说明见 [`REPOSITORY_MAP.md`](REPOSITORY_MAP.md)。
+
+## 快速运行
+
+```bash
+python -m pip install -r requirements.txt
+python simulation/torque_model.py
+python prototype/workflow_orchestrator_mock.py
+python scripts/validate_repo.py
+```
+
+静态看板：直接打开 [`prototype/dashboard/index.html`](prototype/dashboard/index.html)。
+
+## 证据与诚信边界
 
 本项目严格区分：
 
-- **真实个人经历**
-- **AI 生成的合成用户情境**
-- **公开网络用户讨论**
-- **官方产品规格**
-- **工程数字仿真**
-- **未来实体实验**
+- 真实个人旅行经历；
+- AI 合成用户；
+- 公开网络讨论；
+- 官方产品规格；
+- 数字仿真；
+- 未来实体实验。
 
-合成用户不被表述为真实访谈；数字仿真不被表述为已完成实体测量。
+`results/planning_not_experiment/` 中的数值仅用于实验规划，不得称为实体实验结果。当前也不得声称产品已通过 USB-IF、IEC、UL、CE、FCC 或其他认证。
 
-详见 [`docs/05_limitations_and_ethics.md`](docs/05_limitations_and_ethics.md)。
+详见 [`DISCLOSURE.md`](DISCLOSURE.md)。
 
-## 9. Selected Public Sources / 部分公开来源
+## 当前状态
 
-- Anker 735 Charger (Nano II 65W), official specifications:  
-  https://www.anker.com/products/a2667
-- Anker 735 Charger (GaNPrime 65W), official weight and dimensions:  
-  https://www.anker.com/nz/products/a2668
-- Anker Nano Travel Adapter, official specifications and voltage-conversion note:  
-  https://www.anker.com/products/a9215
-- Anker Prime 67W design note on enhanced wall stability:  
-  https://service.anker.com/uk/article-description/What-are-the-differences-between-Anker-Prime-67W-Charger-and-Anker-GaNPrime-65W-Charger
-- Public user report: heavy charger loosening in an outlet:  
-  https://www.reddit.com/r/anker/comments/x1og80/anker_735_wall_prongs_so_thin_the_device_falls/
-- Public user discussion: travel plug falling from loose sockets:  
-  https://www.reddit.com/r/AskElectricians/comments/1bmitef/my_travel_plug_keeps_falling_out_the_sockets_are/
-- Public discussion: all-in-one versus country-specific travel adapters:  
-  https://www.reddit.com/r/travel/comments/1ir3ymv/travel_adapters_do_you_prefer_the_all_in_one_or/
+报名阶段研究与开题材料已基本齐备，但**比赛全流程尚未完成**。仍需：提交报名、真实访谈、实体测试、电子/软件原型、入围后的企业导师迭代、最终答辩材料。
 
-## 10. Status / 当前状态
-
-- [x] 命题拆解
-- [x] 经验驱动 Baseline V0
-- [x] AI 合成用户压力测试
-- [x] 合成数据偏差审查
-- [x] 第一轮公开用户证据整理
-- [x] 墙端下坠力矩数字仿真
-- [x] 初版产品假设收敛
-- [ ] 大规模公开评论编码
-- [ ] 真实访谈
-- [ ] 实体插座负载实验
-- [ ] 多智能体工作流原型
-- [ ] 产品概念图与交互原型
-- [ ] AI 驱动 vs 经验驱动对照实验
-
-## License
-
-MIT
+详见 [`PROJECT_STATUS.md`](PROJECT_STATUS.md) 与 [`ROADMAP.md`](ROADMAP.md)。
