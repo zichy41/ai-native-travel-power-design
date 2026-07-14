@@ -3,7 +3,7 @@
 | 路径 | 内容 | 当前用途 |
 |---|---|---|
 | `README.md` | 项目总览 | 评委首先阅读 |
-| `PROJECT_STATUS.md` | 已完成/未完成 | 防止夸大进度 |
+| `PROJECT_STATUS.md` | 已完成/未完成 | 目前进度 |
 | `ROADMAP.md` | 后续计划 | 展示执行路线 |
 | `application/` | 报名文案 | 复制到报名表 |
 | `docs/00–06` | 初始问题和 Baseline | 展示方法演化 |
