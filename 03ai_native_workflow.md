@@ -1,4 +1,4 @@
-# 03 — AI-Native Workflow / AI 原生工作流
+# 03 — AI-Native Workflow
 
 ## 总体流程
 
