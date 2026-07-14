@@ -1,16 +1,59 @@
-﻿Capability,Boundary,Implementation_Path,Important_Limitation
-AC输入中断,可以,检测高压母线/brownout；用超级电容完成事件写入,可记录中断与恢复；完全断电后无法持续联网
-USB-C物理连接,可以,PD控制器/CC事件,可知连接、断开、重新协商
-协商功率档位,可以,USB PD合约/Source Capabilities,只能看到协商值，不等于设备持续实际吸收
-实际V/I/W/Wh,可以,端口电流电压监测,精度需校准；低负载检测存在阈值
-多口重分配中断,可以,端口事件+电压采样,可检测事件，但需定义“非预期”规则
-温度/保护事件,可以,NTC/数字温度传感器/控制器状态,不能替代正式热测试和认证
-准确设备SOC,默认不可以,需要终端设备配合或厂商接口,USB PD支持部分状态消息不代表所有设备实现或开放
-设备是否已充满,有限推断,功率下降+累计能量+用户设备模型,不能保证；可能是系统优化、温度或后台使用
-插座夹持力,不可以直接,只能通过中断/抖动间接判断,无法区分插座、插脚、外力或接触污染
-低功率根因,有限推断,合约、实测功率、重连、温度联合规则,不能确诊线材/设备/插座中的唯一原因
-电压转换,不可以,产品仅宽电压输入,禁止连接非宽电压高功率电器
-AC万能透传,不提供,产品定位为USB-C电源,避免接地、额定电流和误用复杂度
-所有国家绝对兼容,不可以承诺,按IEC插头类型和地区线覆盖,酒店万能插座和历史插座仍有例外
-掉落率降低比例,当前不可以,需实体插座矩阵实验,力矩仿真不能直接等价为掉落率
-夜间联网通知,有限,超级电容只支持短暂last-gasp BLE,手机距离、蓝牙状态和系统权限会影响成功率
+# Engineering Sources / 工程参考资料
+
+## USB-C / USB Power Delivery
+
+1. USB-IF — USB Charger (USB Power Delivery)  
+   USB PD 3.1 将 USB-C 供电能力从此前的 100W 扩展到最高 240W。  
+   https://www.usb.org/usb-charger-pd
+
+2. USB-IF — USB Power Delivery Compliance Test Specification  
+   包含 Source Capabilities、Status、Battery Status Change、Source Input Change 等协议与测试概念。  
+   https://www.usb.org/sites/default/files/USB%20PD3%20CTS%20rev1%20v1.2%20RC20.pdf
+
+3. Infineon — EZ-PD CCG7x consumer USB-C PD & DC-DC controller  
+   官方参考设计说明双口 USB-PD、动态共享和可编程控制器是可实现路径。  
+   https://www.infineon.com/products/universal-serial-bus/usb-c-ac-dc-and-dc-dc-charging-solutions/ez-pd-ccg7x-consumer-usb-c-power-delivery-dc-dc-controller
+
+4. Infineon — USB-C AC-DC and DC-DC charging solutions  
+   官方产品组合覆盖 18W–140W 单口和多口充电器。  
+   https://www.infineon.com/products/universal-serial-bus/usb-c-ac-dc-and-dc-dc-charging-solutions
+
+5. Texas Instruments — Engineer's Guide to Current Sensing  
+   INA228 等数字功率监测器可测量电流、电压、功率、能量和电荷。  
+   https://www.ti.com/lit/eb/slyy154a/slyy154a.pdf
+
+## 插头与地区适配
+
+6. IEC — World Plugs  
+   不同地区插头具有不同几何、额定值和接地结构。  
+   https://www.iec.ch/world-plugs
+
+## 安克现有产品边界
+
+7. Anker Nano Travel Adapter A9215  
+   约 107g；单 USB-C 最高 20W；官方明确不是电压转换器。  
+   https://www.anker.com/products/a9215
+
+8. Anker Prime 67W GaN Wall Charger  
+   通过较短堆叠式结构和部分包覆插脚强调壁插稳定性。  
+   https://www.anker.com/products/a2669-3-port-wall-charger
+
+9. Anker Prime 67W vs GaNPrime 65W  
+   官方比较页面明确称重新设计的外形提高墙插稳定性。  
+   https://service.anker.com/uk/article-description/What-are-the-differences-between-Anker-Prime-67W-Charger-and-Anker-GaNPrime-65W-Charger
+
+## 使用原则
+
+这些来源用于证明：
+
+- USB-C 多口和功率监测在工程上有实现路径；
+- USB PD 存在状态与协商信息；
+- 不同地区插头必须按当地结构和要求设计；
+- 安克已经关注壁插稳定，因此 Atlas 必须在旅行短线与完整性确认上进一步差异化。
+
+它们不能证明：
+
+- Atlas 已经满足任何标准；
+- 所有设备都会返回电池状态；
+- 产品已经通过温升、EMC 或安规测试；
+- 100W 三口分配已经完成硬件验证。
