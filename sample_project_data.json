@@ -1,0 +1,75 @@
+{
+  "evidence": [
+    {
+      "id": "E01",
+      "type": "personal_experience",
+      "claim": "Loose hotel outlet caused overnight charging failure",
+      "strength": "low",
+      "supports": [
+        "H01",
+        "H04"
+      ]
+    },
+    {
+      "id": "O01",
+      "type": "official_spec",
+      "claim": "Anker Nano Travel Adapter weighs about 107g and provides 20W USB-C",
+      "strength": "high",
+      "supports": [
+        "H02"
+      ]
+    },
+    {
+      "id": "O02",
+      "type": "official_spec",
+      "claim": "Anker Prime 67W uses a redesigned compact structure for wall stability",
+      "strength": "high",
+      "supports": [
+        "H01"
+      ],
+      "counter_to": [
+        "novelty_of_stability"
+      ]
+    },
+    {
+      "id": "S01",
+      "type": "digital_simulation",
+      "claim": "Short-cable wall head reduces static torque versus adapter stack under assumed parameters",
+      "strength": "medium_high",
+      "supports": [
+        "H03"
+      ]
+    },
+    {
+      "id": "C01",
+      "type": "official_competitor_sample",
+      "claim": "Desktop charger architecture already keeps the main body off the wall",
+      "strength": "high",
+      "counter_to": [
+        "short_cable_is_new"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H01",
+      "statement": "Wall-end mechanical instability is a meaningful pain point",
+      "status": "keep"
+    },
+    {
+      "id": "H03",
+      "statement": "A short input cable can materially reduce wall-end load",
+      "status": "keep"
+    },
+    {
+      "id": "H04",
+      "statement": "Users need overnight charging interruption confirmation",
+      "status": "hold"
+    },
+    {
+      "id": "H05",
+      "statement": "A detachable battery reduces total carried weight",
+      "status": "hold"
+    }
+  ]
+}
