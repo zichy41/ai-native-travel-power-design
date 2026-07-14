@@ -1,11 +1,10 @@
-# 飞书 AI 先锋未来人才大赛 — 报名开题材料 V1
+# 飞书 AI 先锋未来人才大赛 — 报名开题材料 
 
 ## 队伍名称
 **RelayLab**
 
 备选：
 - Atlas Lab
-- Relay Intelligence
 - 旅能实验室
 
 ## 项目名称
