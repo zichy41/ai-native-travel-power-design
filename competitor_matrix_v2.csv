@@ -1,0 +1,10 @@
+﻿ID,产品,架构,地区策略,最大USB功率W,端口,官方重量g,墙端结构,可靠性反馈,主要优势,主要缺口,官方来源
+C01,Anker Nano Travel Adapter A9215,万能一体机,A/C/G/I retractable,20,2C2A+1AC,107,完整机身挂墙,基础LED,覆盖广、紧凑,功率低；无连续性诊断,https://www.anker.com/products/a9215
+C02,UGREEN Nexode 65W Travel Charger,可换插脚GaN,US/UK/EU swappable,65,2C1A,未在页面明确,完整主机挂墙,无明确诊断,高功率、插脚可换,墙端负担仍在；地区覆盖有限,https://us.ugreen.com/products/ugreen-65w-nexode-gan-usb-c-3-port-charger-with-us-uk-eu-plug-for-travel
+C03,Zendure Passport III,万能一体机,US/EU/AU/UK integrated,65,4C1A+1AC,168,完整机身挂墙,无明确诊断,65W、多端口、万能,质量与重心集中墙端,https://powerbank.zendure.com/products/passport-iii-all-in-one-65w-adapter-for-home-travel
+C04,OneAdaptr OneWorld65,万能一体机,integrated universal,65,3C2A+1AC,178.2,完整机身挂墙,无明确诊断,65W、多设备、保护功能,墙端质量较大,https://oneadaptr.com/products/oneworld-65-international-adapter-with-65w-pd-charger
+C05,EPICKA TA-105 Max,万能一体机,A/C/G/I integrated,75,3C2A+1AC,293,完整机身挂墙,无明确诊断,75W、接口多、保险丝,体积质量大；功能堆叠,https://www.epickatech.com/products/ta-105-max-75w-fast-charging
+C06,Satechi 145W USB-C 4-Port GaN,可换插脚GaN,US/EU/AU/UK swappable,145,4C,346.5,完整主机挂墙,无明确诊断,140W单口、全USB-C,墙端非常重；功率可能过剩,https://satechi.com/products/145w-usb-c-4-port-gan-travel-charger
+C07,Ceptics World-Way 6,附件套装,6 swappable attachments,版本相关,USB+2AC+attached C,未在页面明确,套装主体/附件,电压指示灯,接地与地区附件细分,附件多，选择和收纳复杂,https://www.ceptics.com/products/ceptics-world-travel-adapter-kit-2-usb-2-us-outlets
+C08,Anker Prime 67W GaN Wall Charger,稳定型固定壁插,region-specific fixed plug,67,2C1A,135.7,短机身直接挂墙,无明确诊断,官方强化壁插稳定,不解决跨国转换头叠加,https://www.anker.com/products/a2669-3-port-wall-charger
+C09,Anker 543 Charger (65W II),桌面式GaN,detachable regional AC cord,65,2C2A,未在页面明确,主机离墙、5ft电源线,无明确诊断,消除重型主机挂墙,线过长；非旅行地区模块系统,https://www.anker.com/nz/products/a2046
