@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "HypothesisRecord",
+  "type": "object",
+  "required": [
+    "id",
+    "statement",
+    "status",
+    "evidence_ids",
+    "next_test"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "statement": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "keep",
+        "revise",
+        "hold",
+        "reject"
+      ]
+    },
+    "evidence_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "counterevidence_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "uncertainty": {
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "next_test": {
+      "type": "string"
+    },
+    "owner": {
+      "type": "string"
+    }
+  }
+}

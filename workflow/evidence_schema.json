@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EvidenceRecord",
+  "type": "object",
+  "required": [
+    "id",
+    "source_type",
+    "claim",
+    "supports",
+    "limitations",
+    "strength"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "source_type": {
+      "enum": [
+        "personal_experience",
+        "official_spec",
+        "public_user_discussion",
+        "real_interview",
+        "synthetic_user",
+        "digital_simulation",
+        "physical_experiment"
+      ]
+    },
+    "source_url": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "claim": {
+      "type": "string"
+    },
+    "supports": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "counterevidence_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "strength": {
+      "enum": [
+        "very_low",
+        "low",
+        "medium",
+        "medium_high",
+        "high"
+      ]
+    },
+    "verified_at": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

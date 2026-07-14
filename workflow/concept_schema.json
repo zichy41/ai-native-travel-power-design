@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CandidateConcept",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "target_user",
+    "jtbd",
+    "must_have",
+    "non_goals",
+    "risks",
+    "scores"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "target_user": {
+      "type": "string"
+    },
+    "jtbd": {
+      "type": "string"
+    },
+    "must_have": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "non_goals": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "risks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "scores": {
+      "type": "object",
+      "required": [
+        "pain",
+        "gap",
+        "feasibility",
+        "brand_fit",
+        "differentiation",
+        "verifiability"
+      ],
+      "properties": {
+        "pain": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "gap": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "feasibility": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "brand_fit": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "differentiation": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "verifiability": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10
+        }
+      }
+    }
+  }
+}

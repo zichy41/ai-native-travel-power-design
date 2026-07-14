@@ -1,0 +1,92 @@
+{
+  "version": "0.2",
+  "roles": [
+    {
+      "id": "A01",
+      "name": "Research Scout",
+      "scope": [
+        "public evidence",
+        "official specs"
+      ],
+      "forbidden": [
+        "infer prevalence from anecdotes"
+      ]
+    },
+    {
+      "id": "A02",
+      "name": "Insight Synthesizer",
+      "scope": [
+        "JTBD",
+        "pain clustering",
+        "contradictions"
+      ],
+      "required": [
+        "evidence_ids"
+      ]
+    },
+    {
+      "id": "A03",
+      "name": "Synthetic User Lab",
+      "scope": [
+        "scenario expansion"
+      ],
+      "required_segments": [
+        "supporter",
+        "no-pain",
+        "price-sensitive",
+        "app-averse",
+        "safety-sensitive",
+        "minimalist"
+      ]
+    },
+    {
+      "id": "A04",
+      "name": "Devil's Advocate",
+      "scope": [
+        "counterarguments",
+        "substitutes",
+        "kill criteria"
+      ]
+    },
+    {
+      "id": "A05",
+      "name": "Power & Electronics Expert",
+      "scope": [
+        "USB PD",
+        "power distribution",
+        "thermal",
+        "detectability"
+      ]
+    },
+    {
+      "id": "A06",
+      "name": "Mechanical Reviewer",
+      "scope": [
+        "mass",
+        "center of gravity",
+        "torque",
+        "socket access",
+        "cord geometry"
+      ]
+    },
+    {
+      "id": "A07",
+      "name": "Safety & Compliance Expert",
+      "scope": [
+        "voltage misuse",
+        "grounding",
+        "ratings",
+        "certification"
+      ]
+    },
+    {
+      "id": "A08",
+      "name": "Decision Auditor",
+      "scope": [
+        "claim-evidence mapping",
+        "conflict audit",
+        "human decisions"
+      ]
+    }
+  ]
+}
