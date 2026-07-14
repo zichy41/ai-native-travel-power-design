@@ -1,5 +1,0 @@
-﻿case,torque_Nm,relative_to_stacked,note
-65W direct wall charger,0.042797,0.4857,Static gravitational torque only
-Travel adapter + 65W charger,0.088109,1.0000,Static gravitational torque only
-Light plug + short cable,0.002453,0.0278,Static gravitational torque only
-Short-cable reduction vs stacked,97.2165%,,Not a real-world drop-rate reduction
