@@ -1,0 +1,13 @@
+﻿Structure,Wall_End_Mass_g,Lever_Arm_mm,Retention_Force_N,Torque_Nm,Risk_Index_Proxy,Disclosure
+T0_direct_long,132,33.05,2.0,0.042797,0.021399,Synthetic planning value; not measured
+T0_direct_long,132,33.05,4.0,0.042797,0.010699,Synthetic planning value; not measured
+T0_direct_long,132,33.05,6.0,0.042797,0.007133,Synthetic planning value; not measured
+T1_adapter_stack,239,37.6,2.0,0.088157,0.044078,Synthetic planning value; not measured
+T1_adapter_stack,239,37.6,4.0,0.088157,0.022039,Synthetic planning value; not measured
+T1_adapter_stack,239,37.6,6.0,0.088157,0.014693,Synthetic planning value; not measured
+T2_stable_short_wall,136,25.2,2.0,0.033621,0.01681,Synthetic planning value; not measured
+T2_stable_short_wall,136,25.2,4.0,0.033621,0.008405,Synthetic planning value; not measured
+T2_stable_short_wall,136,25.2,6.0,0.033621,0.005603,Synthetic planning value; not measured
+T3_atlas_wall_head,25,10.0,2.0,0.002453,0.001226,Synthetic planning value; not measured
+T3_atlas_wall_head,25,10.0,4.0,0.002453,0.000613,Synthetic planning value; not measured
+T3_atlas_wall_head,25,10.0,6.0,0.002453,0.000409,Synthetic planning value; not measured
