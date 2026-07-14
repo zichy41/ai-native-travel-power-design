@@ -1,12 +1,12 @@
-# 02 — Experience-Driven Baseline V0 / 经验驱动基线
+# 02 — Experience-Driven Baseline
 
-## 原始个人旅程
+## 个人旅程
 
 2026 年 5 月，意大利与瑞士 12 天自由行，覆盖城市与阿尔卑斯山区。
 
 携带设备：
 
-- iPhone 15 Pro
+- iPhone 17
 - iPad mini
 - Sony A7C
 - Insta360 X3
