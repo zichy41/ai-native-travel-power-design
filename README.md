@@ -1,125 +1,160 @@
-"""Static wall-load torque model for the Anker Atlas Relay concept.
+# AI-Native Travel Power Design
 
-This is a simplified engineering pre-validation model, not a physical drop-rate test.
-"""
+> An AI-native product design experiment for a reliable cross-border travel power system.  
+> 飞书「AI 先锋未来人才大赛」安克创新命题参赛研究仓库。
 
-from __future__ import annotations
+## 1. Project Goal / 项目目标
 
-import csv
-from dataclasses import dataclass
-from pathlib import Path
+本项目选择安克的**智能充电品类**，探索一套可复用的“AI 原生产品设计与定义工作流”，并用该工作流提出一款面向跨国、多设备旅行者的产品概念。
 
-import matplotlib.pyplot as plt
-import numpy as np
+当前产品假设为：
 
-G = 9.81
+**Anker Atlas Relay**  
+一套采用“轻量地区插头 + 短线式桌面 GaN 主机 + 充电连续性确认”的高可靠旅行供电系统。
 
+核心问题不是“再做一个功率更高、接口更多的旅行充电器”，而是：
 
-@dataclass(frozen=True)
-class Component:
-    name: str
-    mass_kg: float
-    lever_arm_m: float
+> 如何降低陌生、松动、凹陷或位置受限插座中的机械失效风险，并确保用户第二天真正获得可用电量？
 
-    @property
-    def torque_nm(self) -> float:
-        return self.mass_kg * G * self.lever_arm_m
+## 2. Challenge / 命题要求
 
+安克创新要求参赛者：
 
-def calculate_cases() -> dict[str, float]:
-    direct = Component("65W direct wall charger", 0.132, 0.03305)
+1. 选择一个安克品类；
+2. 设计并演示一套“AI 原生”的产品设计与定义工作流；
+3. 产出用户洞察、产品概念与可行性分析；
+4. 对比 AI 驱动方法和传统经验驱动方法的本质差异。
 
-    adapter = Component("travel adapter", 0.107, 0.01245)
-    charger_after_adapter = Component("65W charger after adapter", 0.132, 0.05795)
+详见 [`docs/00_challenge_brief.md`](docs/00_challenge_brief.md)。
 
-    light_wall_head = Component("light region plug head", 0.025, 0.01000)
+## 3. Experience-Driven Baseline V0 / 经验驱动基线
 
-    return {
-        "65W direct wall charger": direct.torque_nm,
-        "Travel adapter + 65W charger": adapter.torque_nm + charger_after_adapter.torque_nm,
-        "Light plug + short cable": light_wall_head.torque_nm,
-    }
+最初凭个人旅行经验提出的直觉方案是：
 
+> 将 GaN 充电器、地区转换插头、充电宝和线材设计成可自由组合的模块化旅行供电系统。
 
-def save_results(output_dir: Path, cases: dict[str, float]) -> None:
-    output_dir.mkdir(parents=True, exist_ok=True)
+这一方案存在明显“先有答案、再找理由”的风险。项目因此建立 Baseline V0，随后让 AI 用户替身、公开用户证据、竞品资料和工程模型共同挑战它。
 
-    stacked = cases["Travel adapter + 65W charger"]
-    short = cases["Light plug + short cable"]
-    reduction = 1 - short / stacked
+详见 [`docs/02_experience_baseline_v0.md`](docs/02_experience_baseline_v0.md)。
 
-    with (output_dir / "torque_results.csv").open("w", newline="", encoding="utf-8-sig") as f:
-        writer = csv.writer(f)
-        writer.writerow(["case", "torque_Nm", "relative_to_stacked", "note"])
-        for name, value in cases.items():
-            writer.writerow([
-                name,
-                f"{value:.6f}",
-                f"{value / stacked:.4f}",
-                "Static gravitational torque only",
-            ])
-        writer.writerow(["Short-cable reduction vs stacked", f"{reduction:.4%}", "", "Not a real-world drop-rate reduction"])
+## 4. How AI Changed the Direction / AI 如何改变方向
 
-    labels = list(cases.keys())
-    values = list(cases.values())
+AI 合成用户情境扩大了场景覆盖，但也暴露出确认偏差和技术幻觉。公开讨论与力学建模进一步提示：
 
-    plt.figure(figsize=(9, 5))
-    plt.bar(labels, values)
-    plt.ylabel("Static wall-end torque (N·m)")
-    plt.title("Wall-End Torque Comparison")
-    plt.xticks(rotation=15, ha="right")
-    plt.tight_layout()
-    plt.savefig(output_dir / "torque_comparison.png", dpi=180)
-    plt.close()
+- 重型充电器叠加转换头会显著提高墙端下坠力矩；
+- 用户已自发使用短延长线或桌面充电器卸载墙面重量；
+- 部分旅行者偏好轻量、目的地明确的地区插头；
+- 万能转换头对另一部分用户已经足够，因此产品不应面向所有旅行者；
+- “可拆卸电池”“App 提醒”“20%–30% 溢价”目前证据不足。
 
-    masses_g = np.arange(20, 41, 2)
-    distances_mm = np.arange(8, 16, 1)
-    grid = np.zeros((len(distances_mm), len(masses_g)))
+产品方向由“大而全的模块化旅行供电系统”收敛为：
 
-    for i, d_mm in enumerate(distances_mm):
-        for j, m_g in enumerate(masses_g):
-            grid[i, j] = (m_g / 1000) * G * (d_mm / 1000)
+> **优先解决机械稳定性、地区适配正确性和充电连续性确认。**
 
-    plt.figure(figsize=(9, 5))
-    image = plt.imshow(
-        grid,
-        aspect="auto",
-        origin="lower",
-        extent=[masses_g.min(), masses_g.max(), distances_mm.min(), distances_mm.max()],
-    )
-    plt.xlabel("Wall-head mass (g)")
-    plt.ylabel("Lever arm (mm)")
-    plt.title("Sensitivity: Light Wall-Head Torque")
-    plt.colorbar(image, label="Torque (N·m)")
-    plt.tight_layout()
-    plt.savefig(output_dir / "sensitivity_analysis.png", dpi=180)
-    plt.close()
+## 5. Current Product Hypothesis / 当前产品假设
 
-    with (output_dir / "sensitivity_results.csv").open("w", newline="", encoding="utf-8-sig") as f:
-        writer = csv.writer(f)
-        writer.writerow(["wall_head_mass_g", "lever_arm_mm", "torque_Nm", "reduction_vs_stacked"])
-        for d_mm in distances_mm:
-            for m_g in masses_g:
-                torque = (m_g / 1000) * G * (d_mm / 1000)
-                writer.writerow([m_g, d_mm, f"{torque:.6f}", f"{1 - torque / stacked:.4%}"])
+### Anker Atlas Relay
 
+- **Region Plug Head**：轻量、目的地明确的地区插头模块；
+- **Flex-Link**：约 25–30 cm 的柔性短电源线，将重型主机从墙面移至桌面；
+- **GaN Power Hub**：面向笔记本、手机、平板与相机的多 USB-C 桌面主机；
+- **Charge Assurance**：检测输入中断、端口反复断连和异常低功率，提供本机提示；手机通知为可选功能；
+- **V2 可选扩展**：可拆卸电池模块，尚未进入核心版本。
 
-def main() -> None:
-    repo_root = Path(__file__).resolve().parents[1]
-    output_dir = repo_root / "results"
+这仍然是**待验证的产品假设**，不是已经被市场证明的结论。
 
-    cases = calculate_cases()
-    save_results(output_dir, cases)
+## 6. Engineering Simulation / 工程建模
 
-    print("Static torque results:")
-    for name, value in cases.items():
-        print(f"- {name}: {value:.6f} N·m")
+仓库包含一个简化静力模型，对比三种结构的墙端下坠力矩：
 
-    stacked = cases["Travel adapter + 65W charger"]
-    short = cases["Light plug + short cable"]
-    print(f"- Reduction vs stacked: {(1 - short / stacked):.2%}")
-    print("\nImportant: this is not a physical drop-rate test.")
+1. 65W 充电器直接插墙；
+2. 旅行转换头与 65W 充电器叠加；
+3. 轻量墙插头 + 短线 + 桌面主机。
 
+运行：
 
-if __name__ == "__main__":
-    main()
+```bash
+pip install -r requirements.txt
+python simulation/torque_model.py
+```
+
+核心模型：
+
+\[
+\tau = m g d
+\]
+
+当前基准结果：
+
+| 结构 | 估算下坠力矩 |
+|---|---:|
+| 65W 直插 | 约 0.043 N·m |
+| 转换头 + 65W 充电器 | 约 0.088 N·m |
+| 轻量插头 + 短线 | 约 0.0025 N·m |
+
+短线方案相对叠加结构的墙端静态力矩降低约 97%。  
+**这不等于真实掉落率降低 97%**，模型只支持“墙端机械负载被显著降低”。
+
+详见 [`simulation/README.md`](simulation/README.md)。
+
+## 7. Repository Contents / 仓库结构
+
+```text
+docs/        命题拆解、问题定义、AI 原生工作流、决策日志
+research/    合成用户、公开证据、竞品矩阵、假设登记表
+simulation/  力矩模型与参数
+results/     仿真结果和图表
+prototype/   后续交互原型与 Agent 工作流
+```
+
+## 8. Evidence Policy / 证据原则
+
+本项目严格区分：
+
+- **真实个人经历**
+- **AI 生成的合成用户情境**
+- **公开网络用户讨论**
+- **官方产品规格**
+- **工程数字仿真**
+- **未来实体实验**
+
+合成用户不被表述为真实访谈；数字仿真不被表述为已完成实体测量。
+
+详见 [`docs/05_limitations_and_ethics.md`](docs/05_limitations_and_ethics.md)。
+
+## 9. Selected Public Sources / 部分公开来源
+
+- Anker 735 Charger (Nano II 65W), official specifications:  
+  https://www.anker.com/products/a2667
+- Anker 735 Charger (GaNPrime 65W), official weight and dimensions:  
+  https://www.anker.com/nz/products/a2668
+- Anker Nano Travel Adapter, official specifications and voltage-conversion note:  
+  https://www.anker.com/products/a9215
+- Anker Prime 67W design note on enhanced wall stability:  
+  https://service.anker.com/uk/article-description/What-are-the-differences-between-Anker-Prime-67W-Charger-and-Anker-GaNPrime-65W-Charger
+- Public user report: heavy charger loosening in an outlet:  
+  https://www.reddit.com/r/anker/comments/x1og80/anker_735_wall_prongs_so_thin_the_device_falls/
+- Public user discussion: travel plug falling from loose sockets:  
+  https://www.reddit.com/r/AskElectricians/comments/1bmitef/my_travel_plug_keeps_falling_out_the_sockets_are/
+- Public discussion: all-in-one versus country-specific travel adapters:  
+  https://www.reddit.com/r/travel/comments/1ir3ymv/travel_adapters_do_you_prefer_the_all_in_one_or/
+
+## 10. Status / 当前状态
+
+- [x] 命题拆解
+- [x] 经验驱动 Baseline V0
+- [x] AI 合成用户压力测试
+- [x] 合成数据偏差审查
+- [x] 第一轮公开用户证据整理
+- [x] 墙端下坠力矩数字仿真
+- [x] 初版产品假设收敛
+- [ ] 大规模公开评论编码
+- [ ] 真实访谈
+- [ ] 实体插座负载实验
+- [ ] 多智能体工作流原型
+- [ ] 产品概念图与交互原型
+- [ ] AI 驱动 vs 经验驱动对照实验
+
+## License
+
+MIT
