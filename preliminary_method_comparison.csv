@@ -1,0 +1,8 @@
+﻿Metric,Experience-driven V0,AI-native current,Status/limitation
+Evidence sources,1 personal journey,9 official competitor samples + public evidence pool,"Current count, not final"
+Explicit hypotheses,6 informal assumptions,8 registered hypotheses,From current repository
+Counter-evidence mechanism,None formalized,Devil's Advocate + counterevidence IDs,Designed in workflow V2
+Functions removed/downgraded,None,Battery module downgraded; App optional,Observed decision change
+Target user,All travelers,Frequent cross-border multi-device travelers,Observed decision change
+Engineering model,None,Static torque model + planned physical test,Digital model only
+Traceability,Narrative,Evidence/Hypothesis/Decision schemas,Prototype structure
