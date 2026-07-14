@@ -1,0 +1,13 @@
+﻿Test_ID,Test,Structure,Independent_Variable,Levels,Repeats,Primary_Metrics,Safety_Mode
+M01,Static torque,T0/T1/T2/T3,Socket angle,0/30/60/90 deg,10 per cell,Torque; displacement; detachment,Unpowered
+M02,Retention force,T0/T1/T2/T3,Socket specimen,new/normal/low-retention surrogate,10 per cell,Peak pull force,Unpowered
+M03,Pendulum disturbance,T0/T1/T2/T3,Release angle,5/10/15 deg,10 per cell,Cycles to movement/drop,Unpowered
+M04,Recess accessibility,T0/T1/T2/T3,Recess depth,0/10/20/30 mm,5 per cell,Insertion success; time,Unpowered
+M05,Furniture obstruction,T0/T1/T2/T3,Clearance,25/35/50/75 mm,5 per cell,Setup success; time,Unpowered
+M06,Cord length usability,T3,Cord length,30/60/90 cm,12-20 users,Success; time; preference,User study
+E01,AC interruption detect,T3 prototype,Interruption,50ms/200ms/1s/5s,20 per cell,Recall; timestamp error,Supervised lab
+E02,Last-gasp logging,T3 prototype,Interruption,1s/5s/full disconnect,20 per cell,Log success rate,Supervised lab
+E03,USB hot plug,T3 prototype,Ports active,1/2/3,20 per event,Cross-port dropout,Supervised lab
+E04,Low-power anomaly,T3 prototype,Actual/negotiated ratio,20/40/60/80%,20 per cell,Detection/false alarm,Supervised lab
+E05,Thermal steady state,T3 prototype,Load,30/65/100W;65+35;45+30+25,3 runs x 2h,Temperature; derating,Supervised lab
+E06,Input voltage,T3 prototype,AC voltage,100/120/230V,3 per load,Efficiency; temp; stability,Programmable AC source

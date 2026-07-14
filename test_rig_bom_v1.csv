@@ -1,0 +1,16 @@
+﻿Item,Specification_or_Role,Safety_or_Use_Note
+Mechanical base,Rigid board + tilting socket plate,Unpowered fixture
+Interchangeable socket plates,Certified sockets + unpowered low-retention surrogate,Never energize damaged/modified sockets
+Recess spacers,10mm modular frames,Geometry test
+Furniture obstruction plates,Adjustable panels,Accessibility test
+Digital force gauge,Retention force measurement,Calibrate before series
+Known masses,Wall-end mass and center-of-gravity models,Unpowered
+Pendulum fixture,"100g mass, 300mm arm, angle scale",Unpowered only
+High-speed camera,Phone slow motion acceptable,Visual event timing
+Programmable AC source/certified switch,Controlled interruption,Lab supervised
+RCD/overcurrent/emergency stop,Electrical safety,Required for powered tests
+USB-C PD analyzer,Contract and event capture,Certified instrument preferred
+USB-C electronic loads,Repeatable port loads,Support target PD profiles
+Power analyzer/oscilloscope,Timing reference,Supervised lab
+Thermocouples/IR camera,Thermal test,Use both if possible
+DAQ computer,Synchronized logging,Separate from high voltage
