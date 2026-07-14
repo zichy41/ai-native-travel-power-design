@@ -1,0 +1,14 @@
+﻿Component,Dimension_or_Parameter,Value,Unit,Status
+Main Hub,Width,76,mm,Working envelope
+Main Hub,Height,58,mm,Working envelope
+Main Hub,Thickness,28,mm,Working envelope
+Main Hub,Target mass minimum,170,g,Before validation
+Main Hub,Target mass maximum,210,g,Before validation
+Display,Width,45,mm,Status strip
+Display,Height,8,mm,Status strip
+Country Cord,Length option 1,30,cm,Test candidate
+Country Cord,Length option 2,60,cm,Test candidate
+Country Cord,Length option 3,90,cm,Test candidate
+Country Cord,Wall-end target mass,25,g,Depends on region
+USB-C ports,Count,3,ports,MVP
+Power,Total target,100,W,MVP target
