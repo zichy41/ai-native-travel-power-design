@@ -1,0 +1,43 @@
+
+digraph AtlasRelay {
+    rankdir=LR;
+    graph [fontname="Arial", bgcolor="white", pad=0.2, nodesep=0.45, ranksep=0.65];
+    node [shape=box, style="rounded", fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    cord [label="Country-specific short mains cord\nLow wall mass"];
+    protect [label="Input Protection\nFuse / Surge / EMI / Inrush"];
+    gan [label="Isolated GaN AC-DC\n100–240V AC → DC Bus"];
+    dcdc [label="Multi-port DC-DC\nDynamic Power Allocation"];
+    c1 [label="USB-C 1\nPD up to 100W"];
+    c2 [label="USB-C 2\nPD"];
+    c3 [label="USB-C 3\nPD"];
+
+    acsense [label="AC / Brownout Sense"];
+    meter [label="Per-port V/I/W/Wh"];
+    pd [label="PD Contract & Reconnect Events"];
+    temp [label="Temperature / Protection"];
+    cap [label="Supercapacitor\nLast-gasp power"];
+    mcu [label="System MCU\nEvent Rules + Log"];
+    ui [label="Local UI\nDisplay / LED / Buzzer"];
+    nvm [label="Nonvolatile Event Log"];
+    ble [label="Optional BLE App"];
+
+    cord -> protect -> gan -> dcdc;
+    dcdc -> c1;
+    dcdc -> c2;
+    dcdc -> c3;
+
+    protect -> acsense -> mcu;
+    dcdc -> meter -> mcu;
+    c1 -> pd;
+    c2 -> pd;
+    c3 -> pd;
+    pd -> mcu;
+    temp -> mcu;
+    cap -> mcu;
+
+    mcu -> ui;
+    mcu -> nvm;
+    mcu -> ble;
+}
