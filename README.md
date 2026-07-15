@@ -1,6 +1,6 @@
 # Anker Atlas Relay
 
-> 飞书「2026 AI 先锋未来人才大赛」安克创新命题：AI 原生产品设计与定义实验。
+> 飞书「2026 AI 先锋未来人才大赛」安克创新命题
 
 **Atlas Relay** 是一套面向高频跨国、多设备旅行者的高可靠 USB-C 供电概念：用地区短电源线把重型 GaN 主机从墙面移到桌面，并记录 AC 中断、USB-C 重连、异常低功率与温度事件。
 
@@ -98,9 +98,5 @@ python scripts/validate_repo.py
 `results/planning_not_experiment/` 中的数值仅用于实验规划，不得称为实体实验结果。当前也不得声称产品已通过 USB-IF、IEC、UL、CE、FCC 或其他认证。
 
 详见 [`DISCLOSURE.md`](DISCLOSURE.md)。
-
-## 当前状态
-
-报名阶段研究与开题材料已基本齐备，但**比赛全流程尚未完成**。仍需：提交报名、真实访谈、实体测试、电子/软件原型、入围后的企业导师迭代、最终答辩材料。
 
 详见 [`PROJECT_STATUS.md`](PROJECT_STATUS.md) 与 [`ROADMAP.md`](ROADMAP.md)。
