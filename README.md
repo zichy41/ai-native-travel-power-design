@@ -8,8 +8,7 @@
 
 ## 项目要回答的问题
 
-安克的命题不是“让 AI 快一点想产品”，而是验证：
-
+验证：
 > AI 能否作为研究员、用户替身、反方评审和工程专家，形成一套可复用、可追溯、能否决错误假设的产品定义 SOP？
 
 本项目从一个经验驱动的“大而全模块化旅行充电器”出发，经公开证据、竞品拆解、反方用户、力学模型和工程审查，逐步收敛为 Atlas Relay。
@@ -98,5 +97,3 @@ python scripts/validate_repo.py
 `results/planning_not_experiment/` 中的数值仅用于实验规划，不得称为实体实验结果。当前也不得声称产品已通过 USB-IF、IEC、UL、CE、FCC 或其他认证。
 
 详见 [`DISCLOSURE.md`](DISCLOSURE.md)。
-
-详见 [`PROJECT_STATUS.md`](PROJECT_STATUS.md) 与 [`ROADMAP.md`](ROADMAP.md)。
