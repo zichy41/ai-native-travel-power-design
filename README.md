@@ -83,16 +83,6 @@ python scripts/validate_repo.py
 
 静态看板：直接打开 [`prototype/dashboard/index.html`](prototype/dashboard/index.html)。
 
-## 证据与诚信边界
-
-本项目严格区分：
-
-- 真实个人旅行经历；
-- AI 合成用户；
-- 公开网络讨论；
-- 官方产品规格；
-- 数字仿真；
-- 未来实体实验。
 
 `results/planning_not_experiment/` 中的数值仅用于实验规划，不得称为实体实验结果。当前也不得声称产品已通过 USB-IF、IEC、UL、CE、FCC 或其他认证。
 
